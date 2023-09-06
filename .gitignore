@@ -1,0 +1,18 @@
+.terraform.lock.hcl
+.terraform/*
+.terraform
+
+.terraform.lock.hcl
+
+terraform.tfstate.backup
+//terraform-provider-azurerm_v3.71.0_x5.exe
+
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log files
+crash.log
+crash.*.log

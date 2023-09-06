@@ -1,0 +1,113 @@
+which purchasing model and service tier is to be selected
+
+        DTU: basic, 
+             standard: (DTU?; data max size?)
+             premium: (DTU?; data max size?)
+        
+        read scale out: azure creates replica for intensive read quries: when we query: 
+                            it get info from secondary database; to reduce the io.
+        
+        vcore: general purpose: (facility to choose the hardware and vcore ) compute tier: provisioned/ 
+                                                                                          serverless 
+                                                                                               - (per second charge / use when there is an unpredictable load )
+                                                                                               - active for 2 hrs like that timeframe when there is high traffic
+                                                                                               - autopause delay:  when there is no traffic in  period of one hour then its automatically inactive
+               hyperscale: supports upto 100TB
+                           can create upto 4 secondary replica (can use for disaster recovery or read intensive queries
+               business critical: can enable or disable the read replica and there is no charge for it.
+
+
+azure deployment models:
+     1. single database:
+          whatever allocated cpu, memory dedicated to that database only.
+          isolated and portable
+
+     2. elastic pool database:
+          collection of databases
+          shared set of resources
+          cost effective solutions
+          unpredictable usage pattern
+     3. managed instance:
+
+     * sql elastic pool: 
+          creation:
+                resource group name: 
+                elastic pool name: 
+                db server:
+                compute+storage: 
+                     poolsetting:  eDTU
+                     databases:
+                     per database settings:
+          create database:
+               name:
+               backup storage redundancy: locally/ Geo
+
+               we can create multiple database based upon requirements
+
+     * active geo replication in azure sql database:
+          allows us to create multiple readonly secondary copies in a region or different region
+          we can create for readable secondary single database or set of databases in elastic pool
+          create upto 4 replicas in same or different regions
+
+          create:
+               resource group:
+               database name:
+               db server:
+                         name:
+                         login name:
+                         login password:
+                         location:
+               compute+storage: 
+               
+               geo replication:
+                    target region:
+                    by default: it is readable for secondary
+                    target server:
+                         name:  secondary server
+                         login username 
+                         password:
+                         location:
+
+
+disaster recovery:
+     automatic database backups
+     active geo replication: database level configuration
+      autofailover groups: server level configuration
+               failover group name:
+               server: select the secondary server
+                    name:
+                    login name:
+                    password:
+                    location:
+               readwrite fail over policy: automatic/manual
+               read/write grace period: minimum one hour
+               databases within group: db1+db2
+
+
+db:
+name
+
+server_id
+
+auto_pause_delay_in_minutes = -1 (A value of -1 means that automatic pause is disabled. This property is only settable for General Purpose Serverless databases.)
+
+create_mode =  Copy, Default, OnlineSecondary, PointInTimeRestore, Recovery, Restore, RestoreExternalBackup, RestoreExternalBackupSecondary, RestoreLongTermRetentionBackup and Secondary
+
+collation
+
+elastic_pool_id / maintenance_configuration_name only one applicable
+
+geo_backup_enabled = true 
+
+read_replica_count
+
+
+Elastic pool: collection of databases; shared set of resources; cost effective solutions; unpredictable usage patterns
+          
+
+
+
+
+
+
+
